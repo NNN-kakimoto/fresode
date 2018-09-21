@@ -1,2 +1,3 @@
 <?php 
-echo 'This page is FRESODE!';
+echo 'This page is FRESODE!<br>';
+echo '・・・のはずだよ';
