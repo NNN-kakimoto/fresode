@@ -1,3 +1,4 @@
 <?php 
 echo 'This page is FRESODE!<br>';
-echo '・・・のはずだよ';
+echo '・・・のはずだよ';i
+echo 'tetttttttt'
