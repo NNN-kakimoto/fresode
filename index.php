@@ -19,7 +19,7 @@ include 'src/key.php';
         // **********************************************
 
         // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = <?php echo $key1; ?>;
+        var subscriptionKey = '<?php echo $key1; ?>';
 
         // You must use the same region in your REST call as you used to get your
         // subscription keys. For example, if you got your subscription keys from
