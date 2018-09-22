@@ -122,7 +122,7 @@ include 'src/key.php';
             alert(errorString);
         });
         
-    };
+    };              
 
     });
  
