@@ -35,7 +35,7 @@ include 'src/key.php';
         var params = {
             "visualFeatures": "Categories,Description,Color",
             "details": "",
-            "language": "en",
+            "language": "ja",
         };
 
         // Display the image.
