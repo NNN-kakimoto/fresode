@@ -77,6 +77,8 @@ include 'src/key.php';
 						}
 
            function processImage(url) {
+               $('.alert-success').css('display', 'none');
+               $('.alert-warning').css('display', 'none');
 						 console.log(url);
 						 if(url == ''){
 							 url = $('#inputImage').val();
