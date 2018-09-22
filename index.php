@@ -21,8 +21,9 @@ include 'src/key.php';
 				}
 			});
         $(document).on('change','#image-select',function(){
-            //console.log('aaa');
-            var blob = document.getElementById('image-select').files[0];
+            // console.log('aaa');
+						var blob = document.getElementById('image-select').files[0];
+						$('#loading_sign').attr('src', 'src/load.gif');
             var formData = new FormData();
             formData.append('image', blob);
             // this.uploadImage(formData);
@@ -52,7 +53,9 @@ include 'src/key.php';
                 var errorString = (errorThrown === '') ? 'Error. ' : errorThrown + ' (' + jqXHR.status + '): ';
                 errorString += (jqXHR.responseText === '') ? '' : (jQuery.parseJSON(jqXHR.responseText).message) ?
                 jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
-		    });
+		    		}).always(function(){
+							$('#loading_sign').attr('src','');
+						});
         });
 
            function processImage(url) {
@@ -140,8 +143,7 @@ include 'src/key.php';
 
 <h1>FRESODE</h1>
 <br><br>
-Image to analyze:	
-<input type="file" id="image-select" ><br>
+<input type="file" id="image-select" ><img id="loading_sign" src=""><br>
 <input type="text" name="inputImage" id="inputImage"
     value="" placeholder="http://example.com/image.jpg" />
 <button id="submit_button">Go!</button>
