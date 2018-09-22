@@ -14,8 +14,14 @@ include 'src/key.php';
 
 <script type="text/javascript">
     $(function(){
+			$('#submit_button').click(function(){
+				url = $('#inputImage').val();
+				if(url != ''){
+					processImage(url);
+				}
+			});
         $(document).on('change','#image-select',function(){
-            console.log('aaa');
+            //console.log('aaa');
             var blob = document.getElementById('image-select').files[0];
             var formData = new FormData();
             formData.append('image', blob);
@@ -50,6 +56,10 @@ include 'src/key.php';
         });
 
            function processImage(url) {
+						 console.log(url);
+						 if(url == ''){
+							 url = $('#inputImage').val();
+						 }
         // **********************************************
         // *** Update or verify the following values. ***
         // **********************************************
@@ -128,22 +138,15 @@ include 'src/key.php';
  
 </script>
 
-<input type="file" id="image-select" >
-<h1>Analyze image:</h1>
-Enter the URL to an image, then click the <strong>Analyze image</strong> button.
+<h1>FRESODE</h1>
 <br><br>
-Image to analyze:
+Image to analyze:	
+<input type="file" id="image-select" ><br>
 <input type="text" name="inputImage" id="inputImage"
-    value="http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
-<button onclick="processImage('https://i.imgur.com/mv54xNm.jpg')">Analyze image</button>
+    value="" placeholder="http://example.com/image.jpg" />
+<button id="submit_button">Go!</button>
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:
-        <br><br>
-        <textarea id="responseTextArea" class="UIInput"
-                  style="width:580px; height:400px;"></textarea>
-    </div>
     <div id="imageDiv" style="width:420px; display:table-cell;">
         Source image:
         <br><br>
