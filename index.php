@@ -129,10 +129,17 @@ include 'src/key.php';
             console.log(data);
             console.log(data.description.tags);
             arraytags = data.description.tags;
-            $.each(arraytags, function(index, value) {
-                if (value == 'メガネ'){
-                    console.log('フリソ！');
-                }
+            
+
+            if(arraytags.indexOf('人') >= 0 && arraytags.indexOf('メガネ') < 0 && arraytags.lengtj >= 5){
+                modal_open(false);
+            }
+            else{
+                modal_open(true);
+            }
+
+
+            
                 
              })
             
