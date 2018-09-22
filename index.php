@@ -24,6 +24,11 @@ include 'src/key.php';
 				}
 			});
         $(document).on('change','#image-select',function(){
+            var send = window.confirm("送信しても後悔しませんか？");
+            if(send == false){
+                $('#image-select').val('');
+                return false;
+            }
             // console.log('aaa');
 						var blob = document.getElementById('image-select').files[0];
 						$('#loading_sign').attr('src', 'src/load.gif');
