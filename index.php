@@ -9,6 +9,9 @@ include 'src/key.php';
 <head>
     <title>Analyze Sample</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="./src/remodal.min.js"></script>
+		<link rel="stylesheet" href="src/remodal.css">
+		<link rel="stylesheet" href="src/remodal-default-theme.css">
 </head>
 <body>
 
@@ -16,6 +19,7 @@ include 'src/key.php';
     $(function(){
 			$('#submit_button').click(function(){
 				url = $('#inputImage').val();
+				
 				if(url != ''){
 					processImage(url);
 				}
@@ -56,7 +60,15 @@ include 'src/key.php';
 		    		}).always(function(){
 							$('#loading_sign').attr('src','');
 						});
-        });
+				});
+						function modal_open(input){
+							if(input){
+								$('[data-remodal-id=modal_free]').remodal();
+							}else{
+								$('[data-remodal-id=modal_lock]').remodal();
+							}
+							
+						}
 
            function processImage(url) {
 						 console.log(url);
@@ -142,7 +154,7 @@ include 'src/key.php';
 </script>
 
 <h1>FRESODE</h1>
-<br><br>
+<div class="remodal-bg"></div>
 <input type="file" id="image-select" ><img id="loading_sign" src=""><br>
 <input type="text" name="inputImage" id="inputImage"
     value="" placeholder="http://example.com/image.jpg" />
@@ -154,6 +166,21 @@ include 'src/key.php';
         <br><br>
         <img id="sourceImage" width="400" />
     </div>
+</div>
+<a href="#modal">Call the modal with data-remodal-id="modal"</a>
+<div class="remodal" data-remodal-id="modal_free">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>フリー素材です！</h1>
+  <p></p>
+  <br>
+  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+</div>
+<div class="remodal" data-remodal-id="modal_lock">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>フリー素材ではありません・・・</h1>
+  <p></p>
+  <br>
+  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
 </div>
 </body>
 </html>
