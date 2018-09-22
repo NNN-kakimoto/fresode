@@ -9,9 +9,8 @@ include 'src/key.php';
 <head>
     <title>Analyze Sample</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-		<script src="./src/remodal.min.js"></script>
-		<link rel="stylesheet" href="src/remodal.css">
-		<link rel="stylesheet" href="src/remodal-default-theme.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="./src/app.css">
 </head>
 <body>
 
@@ -63,9 +62,11 @@ include 'src/key.php';
 				});
 						function modal_open(input){
 							if(input){
-								$('[data-remodal-id=modal_free]').remodal();
+								console.log('remodal free');
+								$('.alert-success').css('display', 'block');
 							}else{
-								$('[data-remodal-id=modal_lock]').remodal();
+								console.log('remodal lock');
+								$('.alert-warning').css('display', 'block');
 							}
 							
 						}
@@ -131,7 +132,7 @@ include 'src/key.php';
             arraytags = data.description.tags;
             
 
-            if(arraytags.indexOf('人') >= 0 && arraytags.indexOf('メガネ') < 0 && arraytags.lengtj >= 5){
+            if(arraytags.indexOf('人') >= 0 && arraytags.indexOf('メガネ') < 0 && arraytags.length >= 5){
                 modal_open(false);
             }
             else{
@@ -143,7 +144,6 @@ include 'src/key.php';
                 
              })
             
-        })
 
         .fail(function(jqXHR, textStatus, errorThrown) {
             // Display error message.
@@ -160,34 +160,39 @@ include 'src/key.php';
  
 </script>
 
-<h1>FRESODE</h1>
-<div class="remodal-bg"></div>
-<input type="file" id="image-select" ><img id="loading_sign" src=""><br>
-<input type="text" name="inputImage" id="inputImage"
-    value="" placeholder="http://example.com/image.jpg" />
-<button id="submit_button">Go!</button>
-<br><br>
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-        Source image:
-        <br><br>
-        <img id="sourceImage" width="400" />
-    </div>
+<header class="gray">
+	<h1>FRESODE</h1>
+</header>
+
+<article>
+	<!-- <div class="input_row">
+		<input type="file"  id="image-select" >
+	</div> -->
+	<div class="input-group input_row">
+    <label class="input-group-btn">
+        <span class="btn btn-primary">Choose  your file
+            <input type="file" id="image-select" style="display:none">
+        </span>
+    </label><img id="loading_sign" src="">
 </div>
-<a href="#modal">Call the modal with data-remodal-id="modal"</a>
-<div class="remodal" data-remodal-id="modal_free">
-  <button data-remodal-action="close" class="remodal-close"></button>
-  <h1>フリー素材です！</h1>
-  <p></p>
-  <br>
-  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
-</div>
-<div class="remodal" data-remodal-id="modal_lock">
-  <button data-remodal-action="close" class="remodal-close"></button>
-  <h1>フリー素材ではありません・・・</h1>
-  <p></p>
-  <br>
-  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
-</div>
+	<div  class="input_group input_row">
+		<input type="text" name="inputImage" class="form-control" id="inputImage"
+				value="" placeholder=" or http://example.com/image.jpg" />
+		<button class="btn" id="submit_button">Go!</button>
+	</div>
+	<div id="wrapper" style="margin-top: 50px;width:1020px; display:table;">
+			<div id="imageDiv" style="width:420px; display:table-cell;">
+					
+					<div class="alert alert-success" role="alert" style="display:none;" >
+						<strong>やったね！</strong>この写真はフリー素材みたいだよ。
+					</div>
+					<div class="alert alert-warning" role="alert" style="display:none;" >
+						<strong>残念！</strong>この写真はフリー素材じゃないみたい。
+					</div>
+					<div>送信された画像</div>
+					<img id="sourceImage" width="400" />
+			</div>
+	</div>
+</article>
 </body>
 </html>
